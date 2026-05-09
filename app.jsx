@@ -209,27 +209,6 @@ function HeroVisual() {
       {/* Layer 4 — particles drifting through the scene */}
       <ParticleField />
 
-      {/* Layer 5 — glass cards float OVER the motion (depth) */}
-      <M.div
-        initial={{ y: 24, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 1.0, duration: 0.8 }}
-        className="hidden md:flex pointer-events-auto absolute right-[14%] bottom-[18%] glass rounded-2xl px-4 py-3 shadow-card items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-hotpink/10 flex items-center justify-center text-hotpink">
-          <Heart className="w-5 h-5" />
-        </div>
-        <div>
-          <div className="font-display text-plum font-semibold leading-none text-sm">{C.heroCards.sinEstres.titulo}</div>
-          <div className="text-xs text-plum/60 mt-0.5">{C.heroCards.sinEstres.subtitulo}</div>
-        </div>
-      </M.div>
-
-      <M.div
-        initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 1.2, type: 'spring', stiffness: 180, damping: 18 }}
-        className="hidden lg:flex pointer-events-auto absolute right-[2%] bottom-[28%] glass rounded-2xl px-3.5 py-2.5 shadow-card flex-col">
-        <div className="text-2xl font-display font-semibold text-plum leading-none">{C.heroCards.sesion.numero}<span className="text-hotpink">{C.heroCards.sesion.unidad}</span></div>
-        <div className="text-[11px] text-plum/60 mt-1">{C.heroCards.sesion.descripcion}</div>
-      </M.div>
     </div>);
 
 }

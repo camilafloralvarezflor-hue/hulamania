@@ -16,7 +16,7 @@ const CONTENT = {
 
   /* ── NAVEGACIÓN ── */
   nav: {
-    telefono: '2974437593',
+    telefono: '+54 297 443 7593',
     botonReservar: 'Reservar',
     links: [
       ['Precios', '#precios'],

@@ -535,11 +535,6 @@ function Pricing({ onPick }) {
                   : 'bg-white text-plum ring-petal/40 shadow-soft'
               }`}>
 
-              {p.destacado &&
-                <div className="absolute -top-px left-1/2 -translate-x-1/2 mt-3 px-3 py-1 rounded-full bg-rose text-white text-xs font-display font-semibold tracking-widest">
-                  {p.etiquetaDestacado}
-                </div>
-              }
 
               {/* Header: ícono + nombre + peso */}
               <div className="flex items-center gap-3">

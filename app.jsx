@@ -77,7 +77,7 @@ function Hero({ onBook }) {
   const opacity = useTransform2(scrollYProgress, [0, 0.7], [1, 0.2]);
 
   return (
-    <section ref={ref} id="top" className="relative hero-gradient overflow-hidden">
+    <section ref={ref} id="top" className="relative bg-cream overflow-hidden">
       <BackgroundField />
 
       {/* Cinematic motion layer — video + halos + particles + glass cards */}
@@ -537,8 +537,7 @@ function Pricing({ onPick }) {
   const incluido = C.precios.incluido;
 
   return (
-    <section id="precios" className="relative py-24 md:py-32">
-      <div className="absolute inset-0 hero-gradient opacity-60" />
+    <section id="precios" className="relative py-24 md:py-32 bg-cream">
       <div className="relative max-w-7xl mx-auto px-5">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <Reveal><Eyebrow>{C.precios.eyebrow}</Eyebrow></Reveal>

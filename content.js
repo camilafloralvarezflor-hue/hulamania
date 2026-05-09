@@ -195,6 +195,8 @@ const CONTENT = {
     descripcion: 'Peluquería canina de barrio, hecha con Amor, productos profesionales y mucho cuidado. Cada peludo merece su día de spa.',
     direccion: 'Zona Norte, Comodoro Rivadavia, Chubut',
     horario: 'Lun – Vier · 11:00 – 19:00\nSabado y Domingo · cerrado',
+    instagram: 'https://www.instagram.com/hula_mania/',
+    tiktok: 'https://www.tiktok.com/@hula_mania',
     email: 'hualamaniacr@gmail.com',
     telefono: '297 · 443 · 7593',
     whatsapp: 'WhatsApp 2974437593',

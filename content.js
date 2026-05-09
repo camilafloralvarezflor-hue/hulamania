@@ -23,6 +23,7 @@ const CONTENT = {
       ['Nosotras', '#nosotras'],
       ['Proceso', '#proceso'],
       ['Reseñas', '#resenas'],
+      ['Blog', '/blog/'],
     ],
   },
 

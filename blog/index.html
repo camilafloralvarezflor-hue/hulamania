@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog · Hulamania Peluquería Canina</title>
+  <meta name="description" content="Novedades, consejos y mimos para tu peludo. Blog de Hulamania Spa Canino, Comodoro Rivadavia." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Fredoka', 'system-ui', 'sans-serif'],
+            sans:    ['Nunito', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            cream:   '#FFF6F4',
+            blush:   '#FFE6EC',
+            petal:   '#FFC9D9',
+            rose:    '#FF8AB3',
+            hotpink: '#E8528D',
+            plum:    '#7A2D54',
+            ink:     '#3A1F2B',
+            lavender:'#D9CCEC',
+          },
+          boxShadow: {
+            soft: '0 20px 50px -20px rgba(232,82,141,0.20)',
+            card: '0 30px 60px -30px rgba(122,45,84,0.30)',
+            pop:  '0 18px 40px -12px rgba(232,82,141,0.40)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Marked.js para parsear Markdown -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Nunito', system-ui, sans-serif;
+      background: #FFF6F4;
+      color: #3A1F2B;
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-display { font-family: 'Fredoka', system-ui, sans-serif; }
+
+    /* Ticker */
+    .ticker { animation: ticker 40s linear infinite; }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Glass */
+    .glass {
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      border: 1px solid rgba(255,255,255,0.7);
+    }
+
+    /* Paw bounce */
+    @keyframes paw-bounce {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+    .paw-bounce { animation: paw-bounce 1.2s ease-in-out infinite; }
+
+    /* Prose — estilos para el contenido markdown */
+    .prose { line-height: 1.85; }
+    .prose h1,.prose h2,.prose h3 {
+      font-family: 'Fredoka', sans-serif;
+      color: #7A2D54;
+      line-height: 1.15;
+    }
+    .prose h2 { font-size: 1.9rem; margin: 2.2rem 0 0.8rem; font-weight: 600; }
+    .prose h3 { font-size: 1.4rem; margin: 1.8rem 0 0.6rem; font-weight: 600; }
+    .prose p  { margin: 1rem 0; color: #3A1F2B; }
+    .prose ul { list-style: none; padding: 0; margin: 1rem 0; }
+    .prose ul li { padding-left: 1.6rem; position: relative; margin: 0.5rem 0; }
+    .prose ul li::before { content: '🐾'; position: absolute; left: 0; font-size: 0.8em; top: 3px; }
+    .prose ol { list-style: decimal; padding-left: 1.5rem; margin: 1rem 0; }
+    .prose ol li { margin: 0.5rem 0; }
+    .prose a  { color: #E8528D; text-decoration: underline; }
+    .prose a:hover { color: #7A2D54; }
+    .prose strong { color: #7A2D54; font-weight: 700; }
+    .prose em     { color: #3A1F2B; font-style: italic; }
+    .prose blockquote {
+      border-left: 4px solid #FFC9D9;
+      margin: 1.5rem 0;
+      padding: 0.75rem 1.25rem;
+      background: #FFF6F4;
+      border-radius: 0 1rem 1rem 0;
+      color: #7A2D54;
+      font-style: italic;
+    }
+    .prose img {
+      max-width: 100%;
+      border-radius: 1.25rem;
+      margin: 2rem 0;
+      box-shadow: 0 20px 50px -20px rgba(122,45,84,0.2);
+    }
+    .prose hr {
+      border: none;
+      border-top: 2px solid #FFC9D9;
+      margin: 2rem 0;
+    }
+    .prose code {
+      background: #FFE6EC;
+      color: #7A2D54;
+      padding: 0.15em 0.45em;
+      border-radius: 0.4em;
+      font-size: 0.88em;
+    }
+    .prose pre {
+      background: #3A1F2B;
+      color: #FFF6F4;
+      padding: 1.25rem;
+      border-radius: 1rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    .prose pre code { background: none; color: inherit; padding: 0; }
+
+    ::selection { background: #FFC9D9; color: #3A1F2B; }
+
+    /* Line clamp para excerpts */
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ── Promo Ticker ─────────────────────────────────────── -->
+<div class="bg-plum text-blush overflow-hidden border-b border-white/10">
+  <div class="flex ticker py-2.5">
+    <div class="flex shrink-0 items-center gap-10 pr-10">
+      <span class="text-sm font-medium tracking-wide flex items-center gap-2">🐾 Baños desde $22.000</span>
+      <span class="text-sm font-medium tracking-wide flex items-center gap-2">🐾 Turnos personalizados</span>
+      <span class="text-sm font-medium tracking-wide flex items-center gap-2">🐾 Sin jaulas ni bozales</span>
+      <span class="text-sm font-medium tracking-wide flex items-center gap-2">🐾 Zona Norte, Comodoro Rivadavia</span>
+      <span class="text-sm font-medium tracking-wide flex items-center gap-2">🐾 4.8 ★ en Google</span>
+    </div>
+    <div class="flex shrink-0 items-center gap-10 pr-10" aria-hidden="true">
+      <span class="text-sm font-medium tracking-wide flex items-center gap-2">🐾 Baños desde $22.000</span>
+      <span class="text-sm font-medium tracking-wide flex items-center gap-2">🐾 Turnos personalizados</span>
+      <span class="text-sm font-medium tracking-wide flex items-center gap-2">🐾 Sin jaulas ni bozales</span>
+      <span class="text-sm font-medium tracking-wide flex items-center gap-2">🐾 Zona Norte, Comodoro Rivadavia</span>
+      <span class="text-sm font-medium tracking-wide flex items-center gap-2">🐾 4.8 ★ en Google</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── Nav ──────────────────────────────────────────────── -->
+<header id="nav-bar" class="sticky top-0 z-40 py-4 transition-all">
+  <div class="max-w-7xl mx-auto px-5">
+    <div id="nav-inner" class="flex items-center justify-between rounded-full px-4 py-2.5 transition-all">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-2xl overflow-hidden bg-gradient-to-br from-rose to-hotpink shadow-pop flex items-center justify-center">
+          <img src="/uploads/logo.png" alt="Hulamania" class="w-full h-full object-cover" />
+        </div>
+        <span class="font-display font-semibold text-plum text-2xl leading-none">Hulamania.</span>
+      </a>
+
+      <!-- Links -->
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="/#precios"  class="px-4 py-2 rounded-full text-plum/80 hover:text-plum hover:bg-white/60 transition text-sm font-semibold">Precios</a>
+        <a href="/#nosotras" class="px-4 py-2 rounded-full text-plum/80 hover:text-plum hover:bg-white/60 transition text-sm font-semibold">Nosotras</a>
+        <a href="/#proceso"  class="px-4 py-2 rounded-full text-plum/80 hover:text-plum hover:bg-white/60 transition text-sm font-semibold">Proceso</a>
+        <a href="/#resenas"  class="px-4 py-2 rounded-full text-plum/80 hover:text-plum hover:bg-white/60 transition text-sm font-semibold">Reseñas</a>
+        <a href="/blog/"     class="px-4 py-2 rounded-full text-hotpink font-semibold text-sm">Blog ✨</a>
+      </nav>
+
+      <!-- CTA -->
+      <a href="https://wa.me/2974437593?text=Hola%20Hulamania!%20Quiero%20pedir%20un%20turno."
+         target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-b from-rose to-hotpink text-white font-semibold text-sm shadow-pop ring-1 ring-white/40 transition hover:-translate-y-0.5">
+        Reservar →
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ── Contenido principal ──────────────────────────────── -->
+<main>
+
+  <!-- Estado de carga -->
+  <div id="state-loading" class="py-40 flex flex-col items-center justify-center">
+    <div class="paw-bounce text-5xl">🐾</div>
+    <p class="text-plum/50 mt-6 font-semibold text-lg">Cargando novedades…</p>
+  </div>
+
+  <!-- Error -->
+  <div id="state-error" class="hidden py-40 text-center px-5">
+    <div class="text-5xl mb-5">😕</div>
+    <h2 class="font-display text-plum text-3xl font-semibold">No pudimos cargar el blog</h2>
+    <p id="error-msg" class="text-plum/50 mt-3 max-w-sm mx-auto">Revisá tu conexión e intentá de nuevo.</p>
+    <a href="/blog/" class="mt-6 inline-block px-6 py-3 rounded-full bg-plum text-cream font-semibold">Reintentar</a>
+  </div>
+
+  <!-- ── Listado de posts ──────────────────────────────── -->
+  <div id="page-listing" class="hidden">
+
+    <!-- Hero -->
+    <section class="relative bg-cream pt-16 pb-12 text-center overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="absolute right-[-5%] top-[10%] w-[60vw] max-w-[700px] aspect-square opacity-40"
+             style="background:radial-gradient(closest-side,rgba(255,180,210,0.6),transparent 70%);filter:blur(40px)"></div>
+        <div class="absolute left-[-5%] bottom-[5%] w-[40vw] max-w-[500px] aspect-square opacity-30"
+             style="background:radial-gradient(closest-side,rgba(217,204,236,0.5),transparent 70%);filter:blur(30px)"></div>
+      </div>
+      <div class="relative max-w-3xl mx-auto px-5">
+        <div class="inline-flex items-center gap-2 bg-white/70 backdrop-blur rounded-full px-4 py-1.5 text-xs font-semibold text-plum ring-1 ring-petal/40 mb-5">
+          <span class="w-2 h-2 rounded-full bg-hotpink animate-pulse"></span>
+          Novedades del spa
+        </div>
+        <h1 class="font-display font-semibold text-plum text-5xl md:text-6xl leading-tight">
+          Blog de Hulamania.
+        </h1>
+        <p class="text-plum/60 text-lg md:text-xl mt-4 leading-relaxed">
+          Consejos de cuidado, historias de nuestros peludos<br class="hidden md:block" /> y las últimas novedades del spa.
+        </p>
+      </div>
+    </section>
+
+    <!-- Grid de posts -->
+    <section class="py-14 md:py-20 bg-cream">
+      <div class="max-w-7xl mx-auto px-5">
+        <div id="posts-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        <!-- Sin posts -->
+        <div id="no-posts" class="hidden text-center py-24">
+          <div class="text-6xl mb-5">🐶</div>
+          <h2 class="font-display text-plum text-3xl font-semibold">Todavía no hay novedades</h2>
+          <p class="text-plum/50 mt-3">¡Volvé pronto! Pronto publicaremos consejos y novedades.</p>
+          <a href="/" class="mt-8 inline-block px-6 py-3 rounded-full bg-plum text-cream font-semibold hover:bg-ink transition">
+            Volver al inicio
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /page-listing -->
+
+  <!-- ── Post individual ──────────────────────────────── -->
+  <div id="page-post" class="hidden">
+
+    <!-- Imagen destacada (se llena por JS) -->
+    <div id="post-hero" class="hidden w-full max-h-[480px] overflow-hidden">
+      <img id="post-hero-img" src="" alt="" class="w-full h-full object-cover" />
+    </div>
+
+    <article class="max-w-3xl mx-auto px-5 py-12 md:py-16">
+
+      <!-- Volver -->
+      <a href="/blog/" class="inline-flex items-center gap-2 text-hotpink font-semibold hover:underline mb-10 block text-sm">
+        ← Volver al blog
+      </a>
+
+      <!-- Meta -->
+      <div id="post-date" class="text-hotpink font-semibold text-xs uppercase tracking-widest mb-3"></div>
+
+      <!-- Título -->
+      <h1 id="post-title" class="font-display font-semibold text-plum text-4xl md:text-5xl leading-tight"></h1>
+
+      <!-- Separador -->
+      <div class="h-px bg-petal/40 my-8"></div>
+
+      <!-- Contenido markdown -->
+      <div id="post-body" class="prose max-w-none"></div>
+
+      <!-- Footer del post -->
+      <div class="mt-14 pt-8 border-t border-petal/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <a href="/blog/" class="inline-flex items-center gap-2 text-hotpink font-semibold hover:underline text-sm">
+          ← Volver al blog
+        </a>
+        <a href="https://wa.me/2974437593?text=Hola%20Hulamania!%20Quiero%20pedir%20un%20turno."
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-b from-rose to-hotpink text-white font-semibold shadow-pop text-sm">
+          Reservar turno →
+        </a>
+      </div>
+    </article>
+
+  </div><!-- /page-post -->
+
+</main>
+
+<!-- ── Footer ───────────────────────────────────────────── -->
+<footer class="bg-plum text-blush/80 pt-12 pb-8 mt-8">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div>
+        <div class="font-display text-cream text-2xl font-semibold">Hulamania.</div>
+        <p class="text-sm mt-2 max-w-xs leading-relaxed">
+          Peluquería canina con amor, productos profesionales y mucho cuidado. Zona Norte, Comodoro Rivadavia.
+        </p>
+      </div>
+      <div class="flex flex-col gap-2 text-sm">
+        <span>📍 Zona Norte, Comodoro Rivadavia</span>
+        <span>🕐 Lun – Vier · 11:00 – 19:00</span>
+        <a href="https://wa.me/2974437593" class="text-petal hover:text-white transition">
+          💬 WhatsApp 297 · 443 · 7593
+        </a>
+      </div>
+    </div>
+    <div class="mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs">
+      <div>© 2026 Hulamania · Hecho con ♥ y mucho champú.</div>
+      <div class="flex gap-5">
+        <a href="https://www.instagram.com/hula_mania/" target="_blank" class="hover:text-cream">Instagram</a>
+        <a href="https://www.tiktok.com/@hula_mania"   target="_blank" class="hover:text-cream">TikTok</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── Nav scroll effect ─────────────────────────────────── -->
+<script>
+  const navBar   = document.getElementById('nav-bar');
+  const navInner = document.getElementById('nav-inner');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 12) {
+      navBar.classList.add('py-3');
+      navBar.classList.remove('py-4');
+      navInner.classList.add('glass','shadow-soft');
+    } else {
+      navBar.classList.remove('py-3');
+      navBar.classList.add('py-4');
+      navInner.classList.remove('glass','shadow-soft');
+    }
+  }, { passive: true });
+</script>
+
+<!-- ── Blog logic ────────────────────────────────────────── -->
+<script>
+/* ─── Configuración ─── */
+const REPO      = 'camilafloralvarezflor-hue/hulamania';
+const BRANCH    = 'main';
+const POSTS_DIR = 'posts';
+
+/* ─── Utilidades ─── */
+function parseFrontmatter(raw) {
+  const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+  if (!m) return { data: {}, content: raw };
+  const data = {};
+  m[1].split('\n').forEach(line => {
+    const idx = line.indexOf(':');
+    if (idx === -1) return;
+    const key = line.slice(0, idx).trim();
+    const val = line.slice(idx + 1).trim().replace(/^["']|["']$/g, '');
+    if (key) data[key] = val;
+  });
+  return { data, content: m[2] };
+}
+
+function formatDate(str) {
+  if (!str) return '';
+  try {
+    const d = new Date(str.slice(0, 10) + 'T12:00:00');
+    return d.toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' });
+  } catch { return str; }
+}
+
+function slugFrom(filename) {
+  // "2026-05-09-mi-post.md" → "mi-post"
+  return filename.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.md$/, '');
+}
+
+function show(id)  { document.getElementById(id).classList.remove('hidden'); }
+function hide(id)  { document.getElementById(id).classList.add('hidden'); }
+
+/* ─── GitHub API ─── */
+async function fetchPostList() {
+  const url = `https://api.github.com/repos/${REPO}/contents/${POSTS_DIR}?ref=${BRANCH}`;
+  const res = await fetch(url, { headers: { 'Accept': 'application/vnd.github.v3+json' } });
+  if (!res.ok) throw new Error(`GitHub API: ${res.status}`);
+  const files = await res.json();
+  if (!Array.isArray(files)) return [];
+  return files
+    .filter(f => f.name.endsWith('.md') && !f.name.startsWith('.'))
+    .sort((a, b) => b.name.localeCompare(a.name)); // más reciente primero
+}
+
+async function fetchPostContent(filename) {
+  const url = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/${POSTS_DIR}/${filename}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Post no encontrado');
+  return res.text();
+}
+
+/* ─── Render ─── */
+function buildCard(filename, data) {
+  const slug    = slugFrom(filename);
+  const title   = data.title   || 'Sin título';
+  const date    = formatDate(data.date);
+  const excerpt = data.excerpt || '';
+  const thumb   = data.thumbnail || '';
+
+  const imgHTML = thumb
+    ? `<div class="aspect-[16/9] overflow-hidden">
+         <img src="${thumb}" alt="${title}"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+       </div>`
+    : `<div class="aspect-[16/9] bg-gradient-to-br from-petal via-rose to-hotpink flex items-center justify-center text-5xl select-none">🐾</div>`;
+
+  return `
+    <a href="/blog/?post=${slug}"
+       class="group flex flex-col rounded-3xl bg-white ring-1 ring-petal/30 shadow-soft overflow-hidden
+              hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
+      ${imgHTML}
+      <div class="flex flex-col flex-1 p-6">
+        ${date ? `<div class="text-xs text-hotpink font-semibold uppercase tracking-wider mb-2">${date}</div>` : ''}
+        <h2 class="font-display font-semibold text-plum text-2xl leading-snug
+                   group-hover:text-hotpink transition-colors">${title}</h2>
+        ${excerpt ? `<p class="text-plum/60 mt-3 text-sm leading-relaxed line-clamp-3">${excerpt}</p>` : ''}
+        <div class="mt-auto pt-4 text-hotpink text-sm font-semibold">Leer más →</div>
+      </div>
+    </a>
+  `;
+}
+
+async function renderListing() {
+  const files = await fetchPostList();
+
+  hide('state-loading');
+  show('page-listing');
+
+  if (files.length === 0) {
+    show('no-posts');
+    return;
+  }
+
+  // Carga frontmatter de todos los posts en paralelo
+  const cards = await Promise.all(
+    files.map(async f => {
+      try {
+        const raw = await fetchPostContent(f.name);
+        const { data } = parseFrontmatter(raw);
+        return buildCard(f.name, data);
+      } catch {
+        return '';
+      }
+    })
+  );
+
+  document.getElementById('posts-grid').innerHTML = cards.filter(Boolean).join('');
+}
+
+async function renderPost(slug) {
+  // Buscar el archivo que corresponde al slug
+  const files  = await fetchPostList();
+  const file   = files.find(f => slugFrom(f.name) === slug);
+  if (!file) throw new Error('Post no encontrado.');
+
+  const raw          = await fetchPostContent(file.name);
+  const { data, content } = parseFrontmatter(raw);
+
+  // Actualizar <title> y meta
+  const title = data.title || 'Novedad';
+  document.title = `${title} · Hulamania`;
+
+  // Imagen destacada
+  if (data.thumbnail) {
+    document.getElementById('post-hero-img').src = data.thumbnail;
+    document.getElementById('post-hero-img').alt = title;
+    show('post-hero');
+  }
+
+  // Fecha
+  if (data.date) {
+    document.getElementById('post-date').textContent = formatDate(data.date);
+  }
+
+  // Título
+  document.getElementById('post-title').textContent = title;
+
+  // Contenido markdown → HTML
+  document.getElementById('post-body').innerHTML = marked.parse(content);
+
+  hide('state-loading');
+  show('page-post');
+  window.scrollTo(0, 0);
+}
+
+/* ─── Router ─── */
+async function init() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const post   = params.get('post');
+
+    if (post) {
+      await renderPost(post.trim());
+    } else {
+      await renderListing();
+    }
+  } catch (err) {
+    hide('state-loading');
+    show('state-error');
+    const msg = document.getElementById('error-msg');
+    if (msg) msg.textContent = err.message || 'Error inesperado.';
+    console.error('[Blog]', err);
+  }
+}
+
+init();
+</script>
+
+</body>
+</html>

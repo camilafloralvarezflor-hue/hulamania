@@ -166,9 +166,9 @@ function Logo({ size = 'text-2xl' }) {
     <div className="flex items-center gap-2">
       <div
         key="badge"
-        className="relative w-10 h-10 rounded-2xl bg-gradient-to-br from-rose to-hotpink shadow-pop flex items-center justify-center"
+        className="relative w-10 h-10 rounded-2xl bg-gradient-to-br from-rose to-hotpink shadow-pop flex items-center justify-center overflow-hidden"
       >
-        <Paw className="w-5 h-5 text-white" />
+        <img src="uploads/logo.png" alt="Hulamania logo" className="w-full h-full object-cover" />
         <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-white shadow animate-pulse" />
       </div>
       <div key="word" className={`font-display font-semibold ${size} text-plum leading-none`}>

@@ -171,7 +171,7 @@ const CONTENT = {
     eyebrow: 'Preguntas frecuentes',
     titulo: 'Lo que las familias preguntan.',
     preguntas: [
-      ['¿Cuánto dura una sesión?',          'Entre 60 y 120 min según tamaño, servicio a realizar y estado delpelaje. Avisamos por WhatsApp cuando ya casi termina.'],
+      ['¿Cuánto dura una sesión?',          'Entre 60 y 120 min según tamaño, servicio a realizar y estado del pelaje. Avisamos por WhatsApp cuando ya casi termina.'],
       ['¿Cero jaulas, en serio?',            'si, nos manejamos con turnos personalizados, tu mascota es atendida ni bien llega a nuestras manos, sin esperas.'],
       ['¿Atienden cachorros?',               'Desde los 3 meses, se recomienda comenzar con sesiones tempranas para generar el habito a la peluqueria.'],
       ['¿Atienden perros agresivos?',      'No, no atendemos perros agresivos, por una cuestion que trabajamos sin bozal, en un entorno tranquilo.'],

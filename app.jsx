@@ -775,6 +775,53 @@ function FAQ() {
 
 }
 
+/* ---------- Mapa ---------- */
+function MapSection() {
+  return (
+    <section className="py-20 md:py-28 bg-cream">
+      <div className="max-w-7xl mx-auto px-5">
+        <div className="text-center max-w-xl mx-auto mb-12">
+          <Reveal><Eyebrow>Dónde estamos</Eyebrow></Reveal>
+          <Reveal delay={0.1}>
+            <h2 className="font-display font-semibold text-plum text-[clamp(2.2rem,4.2vw,3.6rem)] leading-[1.02] mt-3">
+              Zona Norte,<br />Comodoro Rivadavia.
+            </h2>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <p className="text-plum/65 mt-4 text-lg">{C.footer.direccion}</p>
+          </Reveal>
+        </div>
+
+        <Reveal delay={0.15}>
+          <div className="rounded-[28px] overflow-hidden ring-1 ring-petal/40 shadow-card aspect-[16/7] md:aspect-[16/6]">
+            <iframe
+              title="Hulamania en Google Maps"
+              src="https://maps.google.com/maps?q=Hulamania+Pet+Shop+Comodoro+Rivadavia+Chubut+Argentina&output=embed&hl=es&z=15"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.25}>
+          <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-plum/70">
+            <div className="flex items-center gap-2">
+              <span className="text-hotpink font-semibold">📍</span>
+              {C.footer.direccion}
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-hotpink font-semibold">🕐</span>
+              {C.footer.horario.split('\n')[0]}
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>);
+}
+
 /* ---------- CTA banner ---------- */
 function CTA({ onBook }) {
   return (
@@ -911,6 +958,7 @@ function App() {
         <Reviews />
         <ClientesGaleria />
         <FAQ />
+        <MapSection />
         <CTA onBook={abrirWhatsApp} />
       </main>
       <Footer />

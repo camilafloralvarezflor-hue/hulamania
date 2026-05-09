@@ -210,6 +210,17 @@ function HeroVisual() {
       }} />
 
 
+      {/* Layer 3 — imagen Mawy */}
+      <M.div
+        initial={{ scale: 1.04, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute right-[-6%] md:right-[-2%] top-[4%] w-[78vw] md:w-[58vw] max-w-[820px] aspect-[4/3.5] hero-video-mask">
+        <img src="uploads/mawy.PNG" alt="Mawy" className="w-full h-full object-cover object-top" />
+        <div className="absolute inset-0 hero-color-grade" />
+        <div className="absolute inset-0 hero-tint" />
+      </M.div>
+
       {/* Layer 4 — particles drifting through the scene */}
       <ParticleField />
 

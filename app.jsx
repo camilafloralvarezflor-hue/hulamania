@@ -83,9 +83,8 @@ function Hero({ onBook }) {
       {/* Cinematic motion layer — video + halos + particles + glass cards */}
       <HeroVisual />
 
-      <div className="relative max-w-7xl mx-auto px-5 pt-10 md:pt-16 pb-24 md:pb-32 grid lg:grid-cols-12 gap-10 items-center">
-        {/* Copy */}
-        <M.div style={{ y: y2, opacity }} className="lg:col-span-7 relative z-10">
+      <div className="relative max-w-4xl mx-auto px-5 pt-10 md:pt-16 pb-24 md:pb-32 text-center">
+        <M.div style={{ y: y2, opacity }} className="relative z-10">
           <Reveal>
             <div className="inline-flex items-center gap-2 glass-pink rounded-full px-3.5 py-1.5 text-xs font-semibold text-plum">
               <span className="w-2 h-2 rounded-full bg-hotpink animate-pulse" />
@@ -94,9 +93,9 @@ function Hero({ onBook }) {
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h1 className="font-display font-semibold text-plum mt-5 leading-[0.95] text-[clamp(3rem,7vw,6.25rem)]" style={{ opacity: "1", fontSize: "60.94px", width: "402px" }}>
+            <h1 className="font-display font-semibold text-plum mt-5 leading-[0.95] text-[clamp(3rem,7vw,6.25rem)]">
               {C.hero.titulo[0]}<br />
-              {C.hero.titulo[1]} <br />
+              {C.hero.titulo[1]}<br />
               {C.hero.titulo[2]} <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-rose to-hotpink bg-clip-text text-transparent">{C.hero.tituloDestacado}</span>
                 <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 14" preserveAspectRatio="none">
@@ -107,13 +106,13 @@ function Hero({ onBook }) {
           </Reveal>
 
           <Reveal delay={0.15}>
-            <p className="mt-7 text-lg md:text-xl text-plum/70 max-w-lg leading-relaxed">
+            <p className="mt-7 text-lg md:text-xl text-plum/70 max-w-xl mx-auto leading-relaxed">
               {C.hero.subtitulo}
             </p>
           </Reveal>
 
           <Reveal delay={0.25}>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-8 flex flex-wrap justify-center items-center gap-3">
               <PrimaryButton onClick={onBook}>
                 {C.hero.botonPrincipal}
                 <span aria-hidden>→</span>
@@ -125,7 +124,7 @@ function Hero({ onBook }) {
           </Reveal>
 
           <Reveal delay={0.35}>
-            <div className="mt-10 flex items-center gap-5">
+            <div className="mt-10 flex justify-center items-center gap-5">
               <div className="flex -space-x-3">
                 {['#FFB6C9', '#E8528D', '#D9CCEC', '#FF8AB3'].map((c, i) =>
                 <div key={i} className="w-10 h-10 rounded-full ring-2 ring-cream flex items-center justify-center"
@@ -134,7 +133,7 @@ function Hero({ onBook }) {
                   </div>
                 )}
               </div>
-              <div className="text-sm">
+              <div className="text-sm text-left">
                 <div className="flex gap-0.5 text-hotpink">
                   {[...Array(5)].map((_, i) => <Paw key={i} className="w-3.5 h-3.5" />)}
                 </div>
@@ -145,9 +144,6 @@ function Hero({ onBook }) {
             </div>
           </Reveal>
         </M.div>
-
-        {/* Right column — empty, video & glass cards live in HeroVisual backdrop */}
-        <div className="lg:col-span-5 hidden lg:block min-h-[520px]" />
       </div>
 
       {/* Cinematic gradient bleed into next section */}

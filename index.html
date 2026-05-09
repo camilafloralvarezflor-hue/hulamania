@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hulamania · Peluquería Canina</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['Fredoka', 'system-ui', 'sans-serif'],
+          sans: ['Nunito', 'system-ui', 'sans-serif'],
+        },
+        colors: {
+          cream:    '#FFF6F4',
+          blush:    '#FFE6EC',
+          petal:    '#FFC9D9',
+          rose:     '#FF8AB3',
+          hotpink:  '#E8528D',
+          plum:     '#7A2D54',
+          ink:      '#3A1F2B',
+          lavender: '#D9CCEC',
+          mint:     '#C9E8D4',
+        },
+        boxShadow: {
+          soft:  '0 20px 50px -20px rgba(232, 82, 141, 0.25)',
+          card:  '0 30px 60px -30px rgba(122, 45, 84, 0.35)',
+          pop:   '0 18px 40px -12px rgba(232, 82, 141, 0.45)',
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Nunito', system-ui, sans-serif;
+    background: #FFF6F4;
+    color: #3A1F2B;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .font-display { font-family: 'Fredoka', system-ui, sans-serif; letter-spacing: -0.01em; }
+
+  /* Soft hero gradient */
+  .hero-gradient {
+    background:
+      radial-gradient(60% 80% at 80% 20%, #E8B6BC 0%, transparent 60%),
+      radial-gradient(50% 60% at 10% 70%, #D69AA1 0%, transparent 65%),
+      linear-gradient(180deg, #DEA2A9 0%, #DEA2A9 100%);
+  }
+  .glass {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+  }
+  .glass-pink {
+    background: rgba(255, 230, 236, 0.6);
+    backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  /* Bubble noise */
+  .bubble {
+    background:
+      radial-gradient(circle at 32% 28%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.5) 18%, transparent 35%),
+      radial-gradient(circle at 65% 70%, rgba(255,255,255,0.4) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(255, 200, 220, 0.45) 0%, rgba(220, 200, 240, 0.25) 60%, transparent 75%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .ticker {
+    animation: ticker 40s linear infinite;
+  }
+  @keyframes ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .scroll-snap { scroll-snap-type: x mandatory; }
+  .scroll-snap > * { scroll-snap-align: start; }
+
+  /* Hide scrollbar on testimonials */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
+
+  /* Tail wag */
+  @keyframes wag {
+    0%, 100% { transform: rotate(-6deg); }
+    50%      { transform: rotate(6deg); }
+  }
+  .wag { animation: wag 1.4s ease-in-out infinite; transform-origin: bottom left; }
+
+  ::selection { background: #FFC9D9; color: #3A1F2B; }
+
+  @keyframes float-y {
+    0%,100% { transform: translate(0,0) scale(0.95); }
+    25%     { transform: translate(8px,-22px) scale(1.04); }
+    50%     { transform: translate(-6px, 0)  scale(0.98); }
+    75%     { transform: translate(4px, 14px) scale(1.02); }
+  }
+  .float-anim { animation: float-y var(--d, 10s) ease-in-out infinite; animation-delay: var(--delay, 0s); }
+
+  @keyframes float-shape {
+    0%,100% { transform: translateY(0) rotate(var(--r1,-12deg)); }
+    50%     { transform: translateY(-18px) rotate(var(--r2,12deg)); }
+  }
+  .shape-anim { animation: float-shape var(--d, 8s) ease-in-out infinite; animation-delay: var(--delay, 0s); }
+
+  /* Feathered hero video — no visible borders, bleeds into the page */
+  .hero-video-mask {
+    -webkit-mask-image: radial-gradient(70% 65% at 55% 50%, #000 35%, rgba(0,0,0,0.85) 55%, rgba(0,0,0,0.35) 78%, transparent 95%);
+            mask-image: radial-gradient(70% 65% at 55% 50%, #000 35%, rgba(0,0,0,0.85) 55%, rgba(0,0,0,0.35) 78%, transparent 95%);
+  }
+  .hero-color-grade {
+    background:
+      radial-gradient(60% 50% at 60% 40%, rgba(255,210,225,0.25) 0%, transparent 70%),
+      linear-gradient(180deg, rgba(255,241,245,0.0) 30%, rgba(255,241,245,0.55) 100%);
+    mix-blend-mode: soft-light;
+  }
+  .hero-tint {
+    background: radial-gradient(80% 60% at 50% 50%, rgba(232,82,141,0.08), transparent 70%);
+  }
+
+  /* About section bg — matches the new wag video edge color so it fuses */
+  .about-bg {
+    background:
+      radial-gradient(70% 60% at 70% 35%, #ECB1B6 0%, transparent 65%),
+      radial-gradient(60% 60% at 15% 80%, #D89BA1 0%, transparent 70%),
+      linear-gradient(180deg, #E39EA6 0%, #E6A4AB 60%, #EAACB1 100%);
+  }
+
+  /* Twinkling micro-particle */
+  @keyframes drift {
+    0%   { transform: translate(0,0) scale(0.9); opacity: 0; }
+    20%  { opacity: var(--o, 0.8); }
+    100% { transform: translate(var(--dx, 12px), -120px) scale(1.05); opacity: 0; }
+  }
+  .particle { animation: drift var(--d, 10s) linear infinite; animation-delay: var(--delay, 0s); }
+
+  @keyframes pulse-soft {
+    0%,100% { transform: scale(1); opacity: var(--o, 0.55); }
+    50%     { transform: scale(1.06); opacity: calc(var(--o, 0.55) + 0.15); }
+  }
+  .pulse-soft { animation: pulse-soft 7s ease-in-out infinite; }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script>
+  // Suppress a noisy upstream warning from framer-motion 11 about keyframe arrays
+  (function() {
+    const origErr = console.error;
+    console.error = function(msg) {
+      if (typeof msg === 'string' && msg.includes('unique "key"')) return;
+      return origErr.apply(console, arguments);
+    };
+  })();
+</script>
+<script src="https://unpkg.com/framer-motion@11.11.7/dist/framer-motion.js"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="content.js"></script>
+<script type="text/babel" src="components.jsx"></script>
+<script type="text/babel" src="app.jsx"></script>
+</body>
+</html>

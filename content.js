@@ -109,8 +109,8 @@ const CONTENT = {
 
   /* ── PRECIOS ── */
   precios: {
-    eyebrow: 'Precios por tamaño',
-    titulo: 'Sin sorpresas.\nSolo mimos.',
+    eyebrow: 'Nuestros precios dependen del estado del pelaje y el comportamiento de la mascota',
+    titulo: 'Precios.\n Hulamania.',
     incluido: [
       'Baño completo',
       'Limpieza de oídos',

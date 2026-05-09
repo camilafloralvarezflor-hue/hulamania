@@ -6,18 +6,36 @@ El panel de administración te permite crear, editar y eliminar posts del blog d
 
 ---
 
-## 🔐 Paso 1 — Activar el login (hacerlo una sola vez)
+## 🔐 Paso 1 — Crear tu token de acceso (una sola vez, tarda 3 minutos)
 
-El panel usa **Sveltia CMS**, que conecta directamente con tu cuenta de GitHub. No necesitás configurar nada extra — solo autorizar la app la primera vez.
+Para entrar al panel necesitás crear un **token de acceso personal** en GitHub. Es como una contraseña especial para el panel admin. Solo lo hacés una vez.
 
-### Cómo activarlo:
+### Cómo crear el token:
 
-1. **Entrá a** `https://hulamania.com/admin`
-2. Hacé clic en **"Login with GitHub"**
-3. GitHub te va a pedir que autorices **"Sveltia CMS"** — hacé clic en **Authorize**
-4. ¡Listo! Ya entraste al panel.
+1. Abrí **[github.com](https://github.com)** e iniciá sesión con tu cuenta (`camilafloralvarezflor-hue`)
+2. Hacé clic en tu **foto de perfil** (arriba a la derecha) → **Settings**
+3. En el menú de la izquierda, bajá hasta el final → **Developer settings**
+4. Hacé clic en **Personal access tokens** → **Fine-grained tokens**
+5. Hacé clic en **"Generate new token"**
+6. Completá los campos:
+   - **Token name:** `Hulamania CMS`
+   - **Expiration:** elegí `1 year` (o `No expiration`)
+   - **Repository access:** seleccioná **"Only select repositories"** → elegí `hulamania`
+7. En **Permissions**, expandí **"Repository permissions"** y configurá:
+   - **Contents:** `Read and write`
+   - **Metadata:** `Read-only` (se activa sola)
+8. Hacé clic en **"Generate token"** (botón verde al final)
+9. **¡IMPORTANTE!** Copiá el token que aparece — empieza con `github_pat_...` — y guardalo en un lugar seguro (solo se muestra una vez)
 
-> **Nota:** La cuenta de GitHub que uses debe ser la que es dueña del repositorio (`camilafloralvarezflor-hue`). Si usás otra cuenta, no va a tener permisos para guardar cambios.
+### Cómo usar el token para entrar al panel:
+
+1. Abrí **`https://hulamania.com/admin`**
+2. Hacé clic en **"Sign In Using Access Token"**
+3. Pegá el token que copiaste
+4. Hacé clic en **"Sign In"**
+5. ¡Listo! Ya estás dentro del panel.
+
+> **¿Se venció el token?** Si el token expira, repetí los pasos de arriba para crear uno nuevo.
 
 ---
 

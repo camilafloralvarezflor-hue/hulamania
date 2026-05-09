@@ -209,18 +209,16 @@ function HeroVisual() {
         '--o': 0.45
       }} />
 
-      {/* Layer 3 — the video itself, feathered into the page */}
+      {/* Layer 3 — imagen principal del hero */}
       <M.div
         initial={{ scale: 1.04, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
         className="absolute right-[-6%] md:right-[-2%] top-[4%] w-[78vw] md:w-[58vw] max-w-[820px] aspect-[4/3.5] hero-video-mask">
-        <video
-          src="assets/hero.mp4"
-          autoPlay muted loop playsInline preload="auto"
-          poster="assets/bath.png"
+        <img
+          src="assets/bath.png"
+          alt="Peluquería canina Hulamania"
           className="w-full h-full object-cover" />
-        {/* Color grade — warms it up and harmonises with page palette */}
         <div className="absolute inset-0 hero-color-grade" />
         <div className="absolute inset-0 hero-tint" />
       </M.div>
